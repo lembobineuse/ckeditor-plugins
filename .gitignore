@@ -1,6 +1,17 @@
-node_modules
-dist
+# backup & binary files
+*.swp
+*~
+*.bak
+*.zip
+
+# sourcemaps
 *.map
+
+# node modules
+node_modules
+
+# compiled distributions
+dist
 
 # source-editor
 
