@@ -24,9 +24,13 @@ import {
 } from './gulp/codemirror.js';
 import css from './gulp/less.js';
 import getBundler from './gulp/app.js';
+import dist from './gulp/dist.js';
 
 
-const DEBUG = !gutil.env.prod;
+const VERSION = '0.0.1';
+
+const DEBUG = !gutil.env.prod && !(gutil.env._[0] === 'dist');
+console.log(DEBUG);
 
 const js_bundler = getBundler(DEBUG);
 
@@ -36,7 +40,7 @@ const js_bundler = getBundler(DEBUG);
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['vendors', /*'less',*/ 'js'], done => done());
+gulp.task('build', ['vendors', 'less', 'js'], done => done());
 
 gulp.task('js', done => js_bundler.bundle());
 gulp.task('less', css);
@@ -61,28 +65,7 @@ gulp.task('cm-css', done => codemirrorCSS());
 gulp.task('cm-themes', done => codemirrorThemes());
 gulp.task('cm-keymaps', done => codemirrorKeymaps());
 gulp.task('vendors', ['codemirror', 'emmet'], done => done());
-gulp.task('dist', ['clean', 'vendors', 'build'], done => {
-    exec(
-        'cp -R src/dialogs src/icons src/lang src/vendor src/plugin.js dist/ck-source-editor',
-        err => {
-            if (err !== null) {
-                console.log(err);
-                return done();
-            }
-            exec(
-                `zip -r -9 ck-source-editor-${VERSION}.zip ck-source-editor`,
-                {cwd: './dist'},
-                err => {
-                    if (err !== null) {
-                        console.log(err);
-                        return done();
-                    }
-                    done();
-                }
-            );
-        }
-    );
-});
+gulp.task('dist', ['clean', 'vendors', 'build'], done => dist(VERSION, done));
 gulp.task('server', () => {
     gulp.src('.')
         .pipe(webserver({

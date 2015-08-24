@@ -54,10 +54,7 @@ class Bundler
             .pipe(source('app.js'))
             .pipe(buffer())
             .pipe(sourcemaps.init({loadMaps: true}))
-                .pipe(gulpif(!this.debug, (...args) => {
-                    console.log(args);
-                    return uglify();
-                }))
+                .pipe(gulpif(!this.debug, uglify()))
                 .on('error', gutil.log)
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest('src/dialogs'))
