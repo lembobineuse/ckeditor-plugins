@@ -1,0 +1,186 @@
+//
+// ========== Globals & resets
+// 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    height: 100%;
+}
+body {
+    font: 14px/1.5 "Segoe UI", Frutiger, "Frutiger Linotype", Univers, Calibri, "DejaVu Sans Condensed", "Liberation Sans", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+//
+// MAIN ELEMENTS
+//
+#main {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#data {
+    visibility: hidden;
+}
+.CodeMirror {
+    font-family: Menlo,Monaco,"DejaVu Sans Mono",monospace;
+    font-size: 14px;
+    height: 100%;
+}
+.cm-panel {
+    background-color: #F8F8F8;
+}
+
+// 
+// ========== FLEX LAYOUT
+// 
+.vbox,
+.hbox {
+    display: flex;
+    justify-content: space-between;
+}
+.vbox {
+    flex-direction: column;
+    > * + * {
+        margin-top: 4px;
+    }
+}
+.hbox {
+    flex-direction: row;
+    > * + * {
+        margin-left: 4px;
+    }
+}
+//
+// ========== TOP TOOLBAR
+//
+nav {
+    padding: 4px 0;
+    ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+    li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+    li + li {
+        margin-left: 4px;
+    }
+    label {
+        height: 24px;
+    }
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+//
+// ========== SEARCH TOOLBAR
+//
+.search-inputs {
+    flex: 1 0;
+}
+.search-actions .btn {
+    flex: 1 1; 
+}
+
+
+//
+// ========== FORMS
+//
+label, .form-control {
+    font-size: 12px;
+    line-height: 1.5;
+}
+.form-control {
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: 24px;
+    padding: 0;
+    border-radius: 3px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition:
+        border-color ease-in-out .15s
+        , box-shadow ease-in-out .15s
+    ;
+
+    &:focus {
+        border-color: #66afe9;
+        outline: 0;
+        box-shadow:
+            inset 0 1px 1px rgba(0,0,0,.075)
+            , 0 0 8px rgba(102,175,233,.6)
+        ;
+    }
+}
+label {
+    font-weight: 700;
+}
+input[type=text].form-control {
+    padding: 2px 4px;
+}
+
+// 
+// ========== BUTTONS
+// 
+.btn {
+    font-size: 12px;
+    line-height: 1.5;
+}
+.btn {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 1px 5px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+
+    &:hover, &:active, &.active {
+        background-color: #e6e6e6;
+        border-color: #adadad;
+    }
+
+    input[type=checkbox] {
+        display: none;
+    }
+}
+.btn-box {
+    > .btn {
+        &:first-child {
+            margin-left: 0;
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+        &:last-child {
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+    > .btn + .btn {
+        margin-left: -1px; 
+    }
+}

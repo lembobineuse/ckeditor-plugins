@@ -1,2 +1,9 @@
-node_modules/*
-dist/*
+node_modules
+dist
+*.map
+
+# source-editor
+
+/source-editor/src/vendor/*
+/source-editor/src/dialogs/*.js
+/source-editor/src/dialogs/*.css

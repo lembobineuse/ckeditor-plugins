@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/cyborg/bootstrap.min.css">-->
+
+    <style>
+        html, body, main {
+            height: 100%;
+        }
+        #editor {
+            width: 90%;
+            height: 90%;
+            margin: 0 auto;
+        }
+        :-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+         
+        :-moz-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+         
+        :-ms-fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+         
+        :fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+<main class="container-fluid">
+
+    <iframe id="editor" src="../src/dialogs/editor.html" frameborder="0" width="90%" height="90%" allowFullScreen></iframe>
+
+</main>
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Bootstrap Javascript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script>
+
+$(function () {
+
+    var editor = {
+            getData: function () {
+                return $('#editor')[0].contentWindow.document.body.innerHTML.replace(/^\s*/gm, '');
+            }
+        },
+        dialog = {
+            once: function () {},
+            on: function () {},
+        },
+        config = {}
+    ;
+
+    $('#editor').on('load', function () {
+        
+        var win = this.contentWindow;
+        win.bootstrap(dialog, editor, '../', {});
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

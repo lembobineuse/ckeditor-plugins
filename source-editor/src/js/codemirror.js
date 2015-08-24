@@ -1,0 +1,30 @@
+import CodeMirror from 'codemirror/lib/codemirror';
+
+import 'codemirror/mode/xml/xml';
+import 'codemirror/mode/css/css';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/htmlmixed/htmlmixed';
+import 'codemirror/addon/fold/foldgutter';
+//import 'codemirror/addon/fold/foldcode';
+//import 'codemirror/addon/fold/brace-fold';
+import 'codemirror/addon/fold/xml-fold';
+import 'codemirror/addon/edit/closetag';
+import 'codemirror/addon/edit/matchtags';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/addon/edit/matchbrackets';
+import 'codemirror/addon/selection/active-line';
+import 'codemirror/addon/hint/show-hint';
+import 'codemirror/addon/hint/xml-hint';
+import 'codemirror/addon/hint/html-hint';
+import 'codemirror/addon/hint/css-hint';
+import 'codemirror/addon/comment/comment';
+import 'codemirror/addon/comment/continuecomment';
+import 'codemirror/addon/search/searchcursor';
+import 'codemirror/addon/search/match-highlighter';
+import 'codemirror/addon/dialog/dialog';
+import 'codemirror/addon/display/panel';
+//require('codemirror/keymap/emacs');
+//require('codemirror/keymap/vim');
+//require('codemirror/keymap/sublime');
+
+export default CodeMirror;
