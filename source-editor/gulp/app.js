@@ -36,7 +36,7 @@ class Bundler
         this.bundler
             .transform(babelify.configure({
                 stage: 0
-                //, optional: ['runtime']
+                , optional: ['runtime']
             }))
             .transform('browserify-shim')
         ;

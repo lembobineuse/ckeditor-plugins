@@ -31,7 +31,8 @@ function compress (version) {
 
 export default function (version, done) {
     copy()
-        .then(() => compress(version).then(() => done()))
+        .then(() => compress(version))
+        .then(() => done())
         .catch(err => done())
     ;
     //return copy(() => compress(done), () => done());
