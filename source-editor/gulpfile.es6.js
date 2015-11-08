@@ -27,12 +27,10 @@ import getBundler from './gulp/app.js';
 import dist from './gulp/dist.js';
 
 
-const VERSION = '0.0.1';
-
 const DEBUG = !gutil.env.prod && !(gutil.env._[0] === 'dist');
 console.log(DEBUG);
 
-const js_bundler = getBundler(DEBUG);
+const appBundler = getBundler(DEBUG);
 
 //
 // ======================== Tasks
@@ -42,11 +40,11 @@ gulp.task('default', ['watch']);
 
 gulp.task('build', ['vendors', 'less', 'js'], done => done());
 
-gulp.task('js', done => js_bundler.bundle());
+gulp.task('js', done => appBundler.bundle());
 gulp.task('less', css);
 
 gulp.task('watch', ['js', 'less'], () => {
-    js_bundler.watchify();
+    appBundler.watchify();
     gulp.watch('src/js/**/*.js', ['js']);
     gulp.watch('src/less/**/*.less', ['less']);
 });
@@ -65,7 +63,10 @@ gulp.task('cm-css', done => codemirrorCSS());
 gulp.task('cm-themes', done => codemirrorThemes());
 gulp.task('cm-keymaps', done => codemirrorKeymaps());
 gulp.task('vendors', ['codemirror', 'emmet'], done => done());
-gulp.task('dist', ['clean', 'vendors', 'build'], done => dist(VERSION, done));
+gulp.task('dist', ['clean', 'vendors', 'build'], done => {
+    const version = require('./package.json').version;
+    dist(version, done)
+});
 gulp.task('server', () => {
     gulp.src('.')
         .pipe(webserver({

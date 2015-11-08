@@ -1,8 +1,17 @@
 export default {
 
     el (name, attrs={}) {
-        let el = document.createElement(name);
-        Object.keys(attrs).forEach(k => el.setAttribute(k, attrs[k]));
+        const el = document.createElement(name);
+        Object.keys(attrs).forEach(k => {
+            const value = attrs[k];
+            if (k === 'html') {
+                el.innerHTML = value;
+            } else if (k === 'text') {
+                el.textContent = value;
+            } else {
+                el.setAttribute(k, attrs[k]);
+            }
+        });
         return el;
     },
 
@@ -39,7 +48,7 @@ export default {
     },
 
     qsa (sel, node) {
-        return (node || document).querySelectorAll(sel);
+        return Array.from((node || document).querySelectorAll(sel));
     },
 
     on (el, evt, cb) {

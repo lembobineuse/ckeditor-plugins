@@ -34,7 +34,7 @@ export default class UI
         this._setPrefs();
         this._setupFullScreen();
 
-        Array.from($.qsa('input, select', this.ui.toolbar)).forEach(el => {
+        $.qsa('input, select', this.ui.toolbar).forEach(el => {
             // Prevent dropdown to collapse when clicking on inputs
             $.on(el, 'click', e => e.stopPropagation());
         });
@@ -85,7 +85,7 @@ export default class UI
             , textarea: $.id('data')
             , toolbar: prefs
             , font_select: $.qs('#select-font', prefs)
-            , theme_select: $.qs('#select-theme', prefs) 
+            , theme_select: $.qs('#select-theme', prefs)
             , keymap_select: $.qs('#select-keymap', prefs)
             , format_btn: $.qs('#beautify', prefs)
             , fullscreen_btn: $.qs('#fullscreen', prefs)

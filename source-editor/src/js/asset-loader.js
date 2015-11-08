@@ -1,7 +1,7 @@
 import $ from './dom.js';
 
 
-const cache = {};
+const cache = Object.create(null);
 
 
 export default class AssetLoader
@@ -53,7 +53,7 @@ export default class AssetLoader
                 return $.prop(el, {
                     rel: 'stylesheet',
                     type: 'text/css',
-                    href 
+                    href
                 });
 
             case AssetLoader.JS:
