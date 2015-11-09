@@ -13,8 +13,10 @@ node_modules
 # compiled distributions
 dist
 
-# source-editor
+/tests/ckeditor
 
-/source-editor/src/vendor/*
-/source-editor/src/dialogs/*.js
-/source-editor/src/dialogs/*.css
+# sourceeditor vendors
+/sourceeditor/src/vendor/*
+# sourceeditor compiled
+/sourceeditor/src/dialogs/*.js
+/sourceeditor/src/dialogs/*.css

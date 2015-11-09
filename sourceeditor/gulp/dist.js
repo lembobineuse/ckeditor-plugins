@@ -18,13 +18,13 @@ function execPromise(cmd, opts={}) {
 
 function copy () {
     return execPromise(
-        'cp -R src/dialogs src/icons src/lang src/vendor src/plugin.js dist/source-editor'
+        'cp -R src/dialogs src/icons src/lang src/vendor src/plugin.js dist/sourceeditor'
     );
 }
 
 function compress (version) {
     return execPromise(
-        `zip -r -9 source-editor-${version}.zip source-editor`,
+        `zip -r -9 sourceeditor-${version}.zip sourceeditor -x \*.map`,
         {cwd: './dist'},
     );
 }
@@ -35,5 +35,4 @@ export default function (version, done) {
         .then(() => done())
         .catch(err => done())
     ;
-    //return copy(() => compress(done), () => done());
 }

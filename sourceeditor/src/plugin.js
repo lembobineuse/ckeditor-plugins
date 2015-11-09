@@ -1,10 +1,10 @@
 (function (CKEDITOR) {
 'use strict';
 
-CKEDITOR.plugins.add('source-editor',
+CKEDITOR.plugins.add('sourceeditor',
 {
-    requires: 'iframedialog2',
-	icons: 'source-editor,source-editor-rtl',
+    requires: 'fullscreeniframedialog',
+	icons: 'sourceeditor,sourceeditor-rtl',
 	hidpi: true,
     version: 0.1,
 
@@ -12,8 +12,8 @@ CKEDITOR.plugins.add('source-editor',
         var path = this.path
             , config = editor.config.sourceeditor || {}
         ;
-        editor.addCommand('source-editor-dialog', new CKEDITOR.dialogCommand('sourcEditorDialog')); // eslint-disable-line new-cap
-        CKEDITOR.dialog.add('sourcEditorDialog', function()
+        editor.addCommand('source-editor-dialog', new CKEDITOR.dialogCommand('sourceEditorDialog')); // eslint-disable-line new-cap
+        CKEDITOR.dialog.add('sourceEditorDialog', function()
         {
             return {
                 title: editor.lang.sourcearea.toolbar,
@@ -37,8 +37,8 @@ CKEDITOR.plugins.add('source-editor',
                     style: 'width: 100%; height: 100%; min-height:640px;',
                     elements: [
                         {
-                            id: 'editor-frame',
-                            type: 'iframe2',
+                            id: 'source-editor-frame',
+                            type: 'fullscreeniframe',
                             src: path + 'dialogs/editor.html',
                             width: '100%',
                             height: '100%',

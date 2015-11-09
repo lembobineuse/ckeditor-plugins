@@ -71,12 +71,12 @@ IFrameElement.prototype.getContentWindow = function ()
 };
 
 
-CKEDITOR.plugins.add('iframedialog2',
+CKEDITOR.plugins.add('fullscreeniframedialog',
 {
 	requires: 'dialog',
 	onLoad: function ()
     {
-        CKEDITOR.dialog.addUIElement('iframe2', {
+        CKEDITOR.dialog.addUIElement('fullscreeniframe', {
             build: function (dialog, definition, output) {
                 return new IFrameElement(dialog, definition, output);
             }

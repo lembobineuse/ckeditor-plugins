@@ -28,7 +28,7 @@ import dist from './gulp/dist.js';
 
 
 const DEBUG = !gutil.env.prod && !(gutil.env._[0] === 'dist');
-console.log(DEBUG);
+//console.log(DEBUG);
 
 const appBundler = getBundler(DEBUG);
 
@@ -51,7 +51,7 @@ gulp.task('watch', ['js', 'less'], () => {
 
 gulp.task('clean', done => {
     del([
-        './dist/source-editor/*',
+        './dist/sourceeditor/*',
         './dist/*.zip'
     ], done);
 });
