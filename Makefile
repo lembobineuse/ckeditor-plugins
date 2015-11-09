@@ -1,6 +1,7 @@
-package="embo-ckeditor-plugins"
-version="0.0.1"
-release="$(package)_$(version)"
+PACKAGE := "embo-ckeditor-plugins"
+VERSION := $(shell git describe --dirty --always)
+
+release="$(PACKAGE)_$(VERSION)"
 
 all: clean dist
 
