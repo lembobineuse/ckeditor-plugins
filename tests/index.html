@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+</head>
+<body>
+
+<main id="main">
+
+    <textarea name="my-area" id="my-area"></textarea>
+
+</main>
+
+<script src="ckeditor/ckeditor.js"></script>
+<script>
+CKEDITOR.plugins.addExternal("nolinebreaks", "../../nolinebreaks/", "plugin.js");
+CKEDITOR.plugins.addExternal("fullscreeniframedialog", "../../fullscreeniframedialog/", "plugin.js");
+CKEDITOR.plugins.addExternal("sourceeditor", "../../sourceeditor/src/", "plugin.js");
+CKEDITOR.replace('my-area', {
+    extraPlugins: 'nolinebreaks,fullscreeniframedialog,sourceeditor'
+});
+</script>
+
+</body>
+</html>
